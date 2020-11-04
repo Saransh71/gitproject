@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
+toast.configure();
 function App() {
+  const notify = () => {
+    axios
+      .get("http://localhost:3000/")
+      .then((res) => {
+        console.log("res-------------10--------------->", res);
+        toast.success("Basic Notification!!!!");
+      })
+      .catch((err) => console.log("Nikal l***e............."));
+    toast.error(`Basic Notification!!!!`);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={notify}>Notify!</button>
     </div>
   );
 }
