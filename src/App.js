@@ -9,11 +9,12 @@ function App() {
     axios
       .get("http://localhost:3000/")
       .then((res) => {
-        console.log("res-------------10--------------->", res);
-        toast.success("Basic Notification!!!!");
+        toast.success(`Data successfully retrieved`);
       })
-      .catch((err) => console.log("Nikal l***e............."));
-    toast.error(`Basic Notification!!!!`);
+      .catch((err) => {
+        console.log(err);
+        toast.error(`${err}`);
+      });
   };
   return (
     <div className="App">
